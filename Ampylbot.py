@@ -1,25 +1,26 @@
 import asyncio
 from aiogram import Bot, Dispatcher, types
-from aiogram.filters import Text
+from aiogram.filters import CommandStart
+from aiogram.types import Message
 
-TOKEN = "8409070749:AAGcTSutRzjq4RQ_QDN-zOa07YtR9339CDw"
+TOKEN = "ТВОЙ_ТОКЕН"
 STICKER_ID = "CAACAgIAAxkBAAEBk3Jov_QeYTgHvRBgsjPw4AxyuHAi7AACjjkAAp9wGEltZKyNLQOPqDYE"
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
-# Логируем всё, что бот видит
-@dp.message()
-async def log_message(message: types.Message):
-    print(f"📩 Получено сообщение: {message.text}")
+# /start просто для проверки
+@dp.message(CommandStart())
+async def start(message: Message):
+    await message.answer("Бот запущен! Напиши 'да' и увидишь магию :)")
 
-# Реакция на "да"
-@dp.message(Text(contains="да", ignore_case=True))
-async def send_sticker(message: types.Message):
-    await message.reply_sticker(STICKER_ID)
+# реагируем на слово "да" (в любом регистре)
+@dp.message()
+async def react_to_da(message: Message):
+    if "да" in message.text.lower():   # проверяем наличие слова
+        await message.answer_sticker(STICKER_ID)
 
 async def main():
-    print("🤖 Бот запущен!")
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
