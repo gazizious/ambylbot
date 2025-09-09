@@ -3,7 +3,7 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.filters import CommandStart
 from aiogram.types import Message
 
-TOKEN = "ТВОЙ_ТОКЕН"
+TOKEN = "8409070749:AAGcTSutRzjq4RQ_QDN-zOa07YtR9339CDw"
 STICKER_ID = "CAACAgIAAxkBAAEBk3Jov_QeYTgHvRBgsjPw4AxyuHAi7AACjjkAAp9wGEltZKyNLQOPqDYE"
 
 bot = Bot(token=TOKEN)
