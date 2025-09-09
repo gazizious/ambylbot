@@ -13,7 +13,7 @@ dp = Dispatcher()
 
 # Глобальная переменная для хранения времени последнего ответа
 last_reply_time = 0
-cooldown = 60  # сек
+cooldown = 30  # сек
 
 
 @dp.message(CommandStart())
